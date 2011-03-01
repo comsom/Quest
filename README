@@ -1,4 +1,4 @@
-[README for プログラミング言語 Quest]
+desc: README for プログラミング言語 Quest
 
 
 
@@ -19,29 +19,30 @@
 3 Quest を使う
   2.1 対話環境 qi
   2.2 プログラムを書いたファイルを実行する
-4 チュートリアル [前半]
+4 チュートリアル
+  (前半)
   4.1 Hello, World!
   4.2 条件分岐
   4.3 繰り返し
   4.4 関数
   4.5 配列と範囲
-5 チュートリアル [後半]
-  5.6 空間
-  5.7 参照と代入
-  5.8 空間の定義
-  5.9 dot(.) 呼び出し
-  5.10 整数、配列、範囲に対する dot(.) 呼び出し
-  5.11 空間内での評価
-  5.12 他の Quest プログラムの利用
-  5.13 その他
-6 Quest の中身
-  6.1 lexer
-  6.2 eliminator
-  6.3 fparser
-  6.4 constructor
-  6.5 evaluator
-7 反省と今後の課題
-8 言語作成の動機など
+  (後半)
+  4.6 空間
+  4.7 参照と代入
+  4.8 空間の定義
+  4.9 dot(.) 呼び出し
+  4.10 整数、配列、範囲に対する dot(.) 呼び出し
+  4.11 空間内での評価
+  4.12 他の Quest プログラムの利用
+  4.13 その他
+5 Quest の中身
+  5.1 lexer
+  5.2 eliminator
+  5.3 fparser
+  5.4 constructor
+  5.5 evaluator
+6 反省と今後の課題
+7 言語作成の動機など
 
 
 
@@ -62,13 +63,13 @@ PROGNOTES : 主なプログラムに対する覚え書きです。
 
 以下はサンプルコードです。 usage: ./quest sample*.qs で実行できます。
 
-sample1.qs : Rect, Space という2つの空間を定義し、クラスとして用いています。
-sample2.qs : 論文「なぜ関数プログラミングは重要か」に現れるコードを Quest で書きました。
-sample3.qs : Project Euler の問題を解いています。
-sample4.qs : Leaf, Branch 空間で木を表現し、その葉の和を求めています。
-sample5.qs : 複数行にまたがる式の例を挙げています。
-sample6.qs : on_do 式の例を載せています。
-sample7.qs : 素数を扱うためのライブラリです。 sample3.qs に dofile されています。
+clsobj.qs    : Rect, Space という2つの空間を定義し、クラスとして用いています。
+funcprog.qs  : 論文「なぜ関数プログラミングは重要か」に現れるコードを Quest で書くと？
+projeuler.qs : Project Euler の問題を解いています。
+leafsum.qs   : Leaf, Branch 空間で木を表現し、その葉の和を求めています。
+mulinexpr.qs : 複数行にまたがる式の例を挙げています。
+on_do.qs     : on_do 式の例を載せています。
+primeseq.qs  : 素数を扱うためのライブラリです。 sample3.qs に dofile されています。
 
 以下の3つのプログラムは [3 Quest を使う] で解説します。
 
@@ -209,7 +210,7 @@ qi を起動しておくことで、サンプルコードの動きを確かめ�
 
 
 
-{4.1 [前半] Hello, World!}
+{4.1 Hello, World!}
 
 > puts('Hello, World!')
 と打てば標準出力に Hello, World! と出て、改行されます。
@@ -312,7 +313,7 @@ elsif を使うこともできます。
 
 
 
-{4.6 [後半] 空間}
+{4.6 空間}
 
 Quest プログラムのコードはすべていずれかの空間内で走ります。
 最初はトップレベル空間(toplevel space)の中を走ります。
@@ -477,13 +478,13 @@ on <空間> do <1本以上の式> end
 dofile 関数を使うことで、他のファイルに書かれた Quest プログラムを読み込むことができます。
 
 例1：
-dofile('sample5.qs', @s)
+dofile('mulinexpr.qs', @s)
 
 dofile はファイル名と空間を引数にとり、
 その空間上でファイル名で指定されたプログラムを走らせます。
 
 例2：
-P = dofile('sample7.qx', space end)
+P = dofile('primeseq.qx', space end)
 P:PrimeSeq:getp(5)  #=> 11
 
 dofile は引数として渡した空間を返すため、上のように空の空間上でプログラムを走らせられます。
