@@ -1,9 +1,0 @@
-# desc: 素数を標準出力に出す。それだけ。
-
-dofile('sample7.qs', @s)
-
-nprime = 100
-PrimeSeq:acc_times!( nprime - 1 )
-
-puts(  PrimeSeq:seq.map(fun(p) p.to_s end).join(' ')  )
-
