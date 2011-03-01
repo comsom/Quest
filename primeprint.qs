@@ -1,6 +1,6 @@
-# desc: 素数を標準出力に出す。それだけ。    ~/d11b/primes.dat に出力を貼った。
+# desc: 素数を標準出力に出す。それだけ。
 
-dofile('sample7.qs', @s)
+dofile('primeseq.qs', @s)
 
 nprime = 100
 PrimeSeq:acc_times!( nprime - 1 )

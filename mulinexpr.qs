@@ -1,4 +1,4 @@
-# desc: 複数行にまたがる式     mulinexpr :abbrev: multi-line expression
+# desc: 複数行にまたがる式の例     mulinexpr :abbrev: multi-line expression
 
 # Quest の式の区切りに改行と semi-colon(;) の2種を用います。
 # 1行に複数の式を書きたいときは semi-colon(;) を用いれば良いのですが、

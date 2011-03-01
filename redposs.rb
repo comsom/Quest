@@ -1,5 +1,4 @@
-# redposs :abbrev: reduction possibility を計算して
-# file に save するためのプログラム。
+# desc: redposs (還元可能性) を計算して save しておくためのプログラム。
 
 # usage: ruby redposs.rb save
 

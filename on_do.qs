@@ -24,6 +24,7 @@ puts('reverse : ' ++ (1..7).to_a.reverse.to_s)
 
 
 
+
 #----------------
 # times_do の定義
 

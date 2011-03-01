@@ -5,11 +5,12 @@
 # qv :abbrev: Quest values
 
 # usage: ./quest *.qs
-# quest のプログラムファイル *.qs を実行する。
+# ... quest のプログラムファイル *.qs を実行する。
 
 #---------------------------------------------------
 # code の用意
 
+abort('Give me a filename.') unless ARGV.length == 1
 FILENAME = ARGV[0]
 
 code = File::open(FILENAME, 'r').read

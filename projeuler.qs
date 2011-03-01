@@ -58,6 +58,7 @@ puts('(210) : ' ++ largest_prime_factor(210).to_s)
 x = 2*2*3*3*7*11*13*13*13
 puts('(' ++ x.to_s ++ ') : ' ++ largest_prime_factor(x).to_s)
 
+# vvv 結構時間かかる vvv
 x = 600851475143
 puts('(' ++ x.to_s ++ ') : ' ++ largest_prime_factor(x).to_s)
 

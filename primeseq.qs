@@ -56,6 +56,10 @@ end
 
 
 
+
+
+
+
 # # test code
 # 
 # puts('acc_inner : ' ++ PrimeSeq:acc_inner(3).to_s)
@@ -73,3 +77,4 @@ end
 # x = 1009 # 31
 # puts(x.to_s ++ ' is prime? : ' ++ x.is_prime?.to_s)
 # puts('prime seq : ' ++ PrimeSeq:seq.to_s)
+
