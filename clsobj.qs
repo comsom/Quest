@@ -1,4 +1,5 @@
 # desc: クラスシステムの真似事。
+# clsobj :abbrev: class and object
 
 puts("\nclass-oid as a space")
 

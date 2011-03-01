@@ -187,6 +187,9 @@ module Parser
   module_function :set_grammar!, :parse
 end # end of module Parser
 
+
+
+
 def the_completed_pterm(poss_ary)
   # poss_ary から完成した木を一つ取り出す。
   # 曖昧さのない RULESET の下で、

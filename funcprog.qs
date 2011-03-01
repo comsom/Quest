@@ -1,4 +1,4 @@
-# desc: Quest による関数プログラミングの例
+# desc: Quest による関数プログラミングの例 ... 関数の貼り合わせ。
 
 # http://www.sampou.org/haskell/article/whyfp.html
 # 「なぜ関数プログラミングは重要か」の

@@ -1,3 +1,5 @@
+desc: fparser の動きの解説。
+
 [fparser の仕組み]
 
 ここではプログラム言語 Quest のパーサである fparser の仕組みを、例を通して解説します。

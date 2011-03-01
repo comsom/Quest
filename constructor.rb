@@ -1,6 +1,6 @@
 # desc: constructor 構築器
 
-# ... [rule, 計算] の配列 ra_pairs を与えて、解析木に対し計算を施す。
+# [rule, 計算] の配列 ra_pairs を与えて、解析木に対し計算を施す。
 # ra_pairs :abbrev: rule-action pairs
 
 def rule_action(pterm, ra_pairs)

@@ -1,4 +1,4 @@
-# Quest の文法
+# desc: Quest の文法
 
 require 'gsym'
 

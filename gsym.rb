@@ -5,7 +5,7 @@
 class NonTerminal
   attr_reader :gsid # '==' の定義の中でしか使ってない。
   def initialize(gsid)
-    @gsid = gsid           # abbrev: gsym id
+    @gsid = gsid            # abbrev: gsym id
   end
   def is_nonterminal?
     true

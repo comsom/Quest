@@ -8,3 +8,4 @@ fun pswd()
 end
 
 (1..5).inject(nil, fun(i,j) puts( pswd() ) end)
+

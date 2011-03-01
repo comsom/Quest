@@ -1,7 +1,7 @@
 # desc: 複数の *.rb が使う Array method が現れたので、
 # desc: そういう Array method だけ抜き出してここにまとめておく。
 
-# fparser.rb と redposs.rb が使う methods
+# methods used by fparser.rb and redposs.rb
 
 class Array
   def concatall(&proc)

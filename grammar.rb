@@ -1,4 +1,5 @@
 # desc: 文法集。 fparser が扱える文法の例がある。
+
 # Quest との直接の関係はない。
 
 require 'gsym'
@@ -371,6 +372,7 @@ end
 
 
 
+# vvv test code vvv
 
 if $0 == __FILE__
   if ARGV.length != 1

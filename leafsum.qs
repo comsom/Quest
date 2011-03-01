@@ -1,4 +1,4 @@
-# desc: 葉の値の和を計算する。
+# desc: 葉の値の和を計算する  ... 空間を型として使う。
 
 space Leaf init
   fun new(x) @s end

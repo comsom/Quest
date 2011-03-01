@@ -40,7 +40,9 @@ end
 
 
 
+# vvv test code vvv
 
+# usage : ruby lexer.rb
 
 if $0 == __FILE__
   pairs =

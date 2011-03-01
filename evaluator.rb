@@ -4,6 +4,7 @@
 
 require 'qerror'
 
+#-------------------------------------
 # vvv dofile のために予め用意しておく vvv
 
 require 'gquest'
@@ -20,6 +21,7 @@ redposs = Marshal.load(f)
 f.close
 set_grammar!( RULESET, START_SYMBOL, redposs )
 
+#-----------------------------------
 # atom : iden, spcs, integer, string
 # oper : +,-,*,/,%,=
 
