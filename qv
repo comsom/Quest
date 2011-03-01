@@ -1,0 +1,42 @@
+#!/usr/bin/ruby
+
+# desc: Quest のインタプリタ。ただしトップレベルで評価した式の値を標準出力に吐き出す。
+
+# qv :abbrev: Quest values
+
+# usage: ./qv *.qs
+# quest のプログラムファイル *.qs を quest と同じやり方で実行する。
+# ただし qv ではトップレベルで評価した式の値をすべて標準出力に吐き出す。
+
+#---------------------------------------------------
+# code の用意
+
+abort('Give me a *.qs file.') unless ARGV.length == 1
+FILENAME = ARGV[0]
+
+code = File::open(FILENAME, 'r').read
+
+#---------------------------------------------------
+# 他の file から必要なものをとってくる。
+
+require 'evaluator'
+  
+#---------------------------------------------------
+# code を解釈実行する。
+
+# puts;puts('code : ' + code.inspect)
+
+tokenseq = match_action(code, PAIRS)
+# puts('match_action #=> ' + tokenseq.inspect)
+
+tokenseq = eliminate(tokenseq)
+# puts('eliminate #=> ' + tokenseq.inspect)
+
+pterm = the_completed_pterm( parse( tokenseq ) )
+abort(pterm.inspect) if pterm.is_a?(QError)
+sexps = rule_action(pterm, RA_PAIRS)
+sexps.each{|sexp|
+  # puts(sexp.inspect)
+  puts('s_eval #=> ' + s_eval(sexp,SP_TOPLEVEL).inspect)
+}
+

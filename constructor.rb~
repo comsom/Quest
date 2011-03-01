@@ -1,0 +1,76 @@
+# date: 7;2011/2/13 (sun)
+
+# constructor ... [rule, 計算] の配列 ra_pairs を与えて、解析木に対し計算を施す。
+# ra_pairs :abbrev: rule-action pairs
+
+def rule_action(pterm, ra_pairs)
+  if pterm.instance_of?(Branch)
+    # pterm.rule に合致する action を ra_pairs からとってきて、
+    # それに pterm.collection を与えて計算させる。
+    action = get_action(pterm.rule, ra_pairs)
+    action.call(pterm.collection)
+  elsif pterm.instance_of?(Terminal)
+    pterm.val
+  end
+end
+def get_action(pterm_rule, ra_pairs)
+  ra_pairs.each {|rule, action| return action if pterm_rule == rule }
+  abort('Abort in get_action') # ここに制御が来ることはまずないだろう……。
+end
+
+
+
+if $0 == __FILE__
+  require 'lexer'
+  require 'fparser'
+  include Parser
+  require 'grammar'
+
+  #---------------------------------------------------------------------
+  puts;puts('QuestSimple : tokenize, parse, and construct the code.')
+
+  include GQuestSimple
+  set_grammar!( RULESET, START_SYMBOL )
+
+  def put_tpc(code) # tpc :abbrev: Tokenize Parse Construct
+    # 一つの code に対する test にけっこう行数がかかるので method にまとめた。
+    puts
+    puts('code : ' + code.inspect)
+    tokenseq = match_action(code, PAIRS)
+    puts('match_action #=> ' + tokenseq.inspect)
+    tokenseq = eliminate( tokenseq )
+    poss_ary = parse(tokenseq)
+    # puts('parse #=>' + poss_ary.inspect)
+    pterm = the_completed_pterm(poss_ary)
+    puts('rule_action #=> ' + rule_action(pterm, RA_PAIRS).inspect)
+  end
+
+  put_tpc( %[01234; survey \n '56789'; 'reports'] ) # %[;;;] # 
+  put_tpc( %[ a(single, 'simple', sample) \n _22("KALEVALA"()()) ] ) # parp8008
+  put_tpc( "perp8008 # line comment \n exit(\\\n); symplectic" )
+  put_tpc( " (_p \\\n ()) ;\n say(yes, 7) \n phytoagglutinin" )
+  put_tpc( %[ defun(sq_sum, arg(x,y), sum(sq(x),sq(y))); sq_sum(3,4) ] )
+
+  puts('test boinary operators')
+  put_tpc( '1 + x' )
+  put_tpc( '8 + q * ten - 11' )
+  put_tpc( <<CODE.chomp )
+    _123power_sum = lambda(argl(x,y,z), code(x + y*y + z*z*z))
+CODE
+  put_tpc( %[ puts('hello' \\\n + to_s(world)) ] ) # 実行時に型エラーになるだろう。
+  put_tpc(%[a=3; b=4
+            puts('a*(b+5)%2 : ' + face( a*(b+5)%2 ) + ' ... done') ] )
+
+  #-----------------------------------------------------------------
+  puts;puts('IntSum : tokenize, parse, and construct the code.')
+
+  include GIntSum
+  set_grammar!( RULESET, START_SYMBOL )
+
+  put_tpc('89 -99 30 1')
+end
+
+
+
+
+

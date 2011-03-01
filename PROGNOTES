@@ -1,0 +1,83 @@
+[主なプログラムに対する覚え書き]
+
+quest
+- Quest のインタプリタ
+- Quest で書かれたプログラム *.qs を実行する。
+- [使い方] usage: ./quest test.qs
+
+qi
+- qi :abbrev: quest interactive
+- Quest の対話環境：一行ずつ式を入力して評価させることができる。
+- [使い方] usage: ./qi
+
+qv
+- 基本的には quest と同じ。
+- TOPLEVEL において実行した各式の値が表示される。
+- [使い方] usage: ./qv test.qs
+
+gsym.rb
+- [提供] class NonTerminal Terminal の定義がある。
+
+gquest.rb
+- module Quest (の文法)を定義している。
+
+grammar.rb
+- [依存] require 'gsym'
+- [提供] 様々な文法を module G* の形で定義している。
+- 文法を使う際には include G* すること。これにより定数 RULESET, START_SYMBOL を得る。
+  他の定数を使う側で陽に書く必要はない(見えちゃってるけど……)。
+- GQuestSimple は lexer, eliminator, parser を持つ。
+- GIntSum は lexer, parser, constructor を持つ。今回 RA_PAIRS で書き直した。
+- constructor が使う RA_PAIRS (abbrev: rule-action pairs)の action 内では、
+  Branch, さらに詳しく言えば rule, に対する値の計算だけ定義すればよい。
+  Terminal に対する計算は
+  constructor.rb の rule_action が定めている(すなわち pter.val)ので必要ない。
+- ruby grammar.rb g_sum_mul または ruby grammar.rb g_sum_mul_2 で
+  動きを確かめられる。
+
+redposs.rb
+- [使い方] usage: ruby redposs.rb save
+- redposs :abbrev: reduction possibility 還元可能性 を計算して、
+  redposs.dat (default data file) に save するためのプログラム。
+- fparser の set_grammar! の三番目の引数として redposs を与えること。
+
+fparser.rb
+- [提供] module Parser が method parse set_grammar! を提供する。
+  parse は引数 tokenseq から poss_ary を計算して返す。
+  parse を呼ぶ前に set_grammar! で文法をセットしておくこと。
+- parse は「引数 tokenseq から解析木を作って返す」のではないことに注意。
+  返り値は poss_ary である。
+- parser という名前のライブラリがすでにあるらしく(require 'parser' がうまく行かない)、
+  別の名前を考える必要があった。
+- fparser :abbrev: forest parser
+  poss は Branch から成る木であるから、それを集めた poss_ary は森に例えられる。
+- [提供] the_completed_pterm を提供する。poss_ary から完成した木を一つ取り出す。
+
+lexer.rb
+- [提供] method match_action
+- [独立性] match_action 自身は dquest 内の他のいかなる *.rb にも頼らず動く。
+  ruby lexer.rb でそれを確かめられる。
+
+constructor.rb
+- [提供] method rule_action
+
+evaluator.rb
+- [提供] method s_eval
+- [依存] dofile を使うため、上記のプログラムの多くに依存している。
+
+プログラム内で使っている略語・造語の意味は検索 grep abbrev * すれば見出せるであろう。
+
+
+
+
+grammar.rb 内の文法 GQuestSimple について
+- rule_action (constructor) は exprs から 式の配列 i.e. S式プログラム を返す。
+- RA_PAIRS の action 部の引数 c には、対応する rule の collection が渡される。
+
+
+
+
+
+
+
+

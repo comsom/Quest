@@ -1,0 +1,10 @@
+# date: 8;2011/2/20 (sun)
+
+n = 10
+
+puts((fun _(x,y)
+  if x>y
+  then x-y
+  else z=x+1; _(z*z,y+n)
+  end
+end)(1,2).to_s

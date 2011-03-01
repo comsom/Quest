@@ -1,0 +1,44 @@
+#!/usr/bin/ruby
+
+# desc: Quest のインタプリタ
+
+# qv :abbrev: Quest values
+
+# usage: ./quest *.qs
+# quest のプログラムファイル *.qs を実行する。
+
+#---------------------------------------------------
+# code の用意
+
+FILENAME = ARGV[0]
+
+code = File::open(FILENAME, 'r').read
+
+#---------------------------------------------------
+# 他の file から必要なものをとってくる。
+
+require 'evaluator'
+  
+#---------------------------------------------------
+# code を解釈実行する。
+
+# tokenize
+tokenseq = match_action(code, PAIRS)
+
+# eliminate
+tokenseq = eliminate(tokenseq)
+
+# parse
+pterm = the_completed_pterm( parse( tokenseq ) )
+
+puts(pterm.inspect) if pterm.is_a?(QError)
+
+# construct
+sexps = rule_action(pterm, RA_PAIRS)
+
+# evaluate
+sexps.each{|sexp|
+  val = s_eval(sexp,TOPLEVEL_SPACE)
+  abort(val.inspect) if val.is_a?(QError)
+}
+
