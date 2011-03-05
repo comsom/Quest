@@ -40,7 +40,7 @@ puts("\nProject Euler Problem 3")
 
 # 600851475143 の素因数の中で最大のものを求めよ。
 
-dofile('sample7.qs', @s)  # 素数列ライブラリを持ってくる。
+dofile('primeseq.qs', @s)  # 素数列ライブラリを持ってくる。
 
 fun largest_prime_factor(n)
   p = n.lepf
