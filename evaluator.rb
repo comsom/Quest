@@ -16,7 +16,8 @@ require 'fparser'
 include Parser
 require 'constructor'
 
-f = File::open(File.expand_path('~/d11c/dquest/redposs.dat'), 'r')
+# f = File::open(File.expand_path('~/d11c/dquest/redposs.dat'), 'r')
+f = File::open('redposs.dat', 'r')
 redposs = Marshal.load(f)
 f.close
 set_grammar!( RULESET, START_SYMBOL, redposs )

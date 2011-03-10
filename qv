@@ -19,7 +19,7 @@ code = File::open(FILENAME, 'r').read
 #---------------------------------------------------
 # 他の file から必要なものをとってくる。
 
-$LOAD_PATH << '~/d11c/dquest'
+# $LOAD_PATH << '~/d11c/dquest'
 
 require 'evaluator'
   
