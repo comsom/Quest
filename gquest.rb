@@ -1,6 +1,6 @@
 # desc: Quest の文法
 
-require 'gsym'
+require File.expand_path('../gsym', __FILE__) # 'gsym'
 
 module GQuest
   #-----------------------------------------------------------------------------

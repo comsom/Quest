@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/opt/local/bin/ruby
 
 # desc: Quest の対話環境
 
@@ -9,9 +9,7 @@
 #---------------------------------------------------
 # 他の file から必要なものをとってくる。
 
-# $LOAD_PATH << '~/d11c/dquest'
-
-require 'evaluator'
+require File.expand_path('../evaluator', __FILE__)
 
 #---------------------------------------------------
 # 文字列を Quest コードとして実行するメソッド

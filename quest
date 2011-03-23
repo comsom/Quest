@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/opt/local/bin/ruby
 
 # desc: Quest のインタプリタ
 
@@ -11,16 +11,14 @@
 # code の用意
 
 abort('Give me a filename.') unless ARGV.length == 1
-FILENAME = ARGV[0]
+FILENAME = File.expand_path('../'+ARGV[0], __FILE__)
 
 code = File::open(FILENAME, 'r').read
 
 #---------------------------------------------------
 # 他の file から必要なものをとってくる。
 
-# $LOAD_PATH << '~/d11c/dquest'
-
-require 'evaluator'
+require File.expand_path('../evaluator', __FILE__)
   
 #---------------------------------------------------
 # code を解釈実行する。

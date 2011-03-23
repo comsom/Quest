@@ -2,22 +2,24 @@
 
 # Array の形で書かれたS式を評価・実行する。
 
-require 'qerror'
+def expath(p) ; File.expand_path("../#{p}", __FILE__) ; end
+
+require expath('qerror') # 'qerror'
 
 #-------------------------------------
 # vvv dofile のために予め用意しておく vvv
 
-require 'gquest'
+require expath('gquest')
 include GQuest
 
-require 'lexer'
+require expath('lexer')
 
-require 'fparser'
+require expath('fparser')
 include Parser
-require 'constructor'
+require expath('constructor')
 
 # f = File::open(File.expand_path('~/d11c/dquest/redposs.dat'), 'r')
-f = File::open('redposs.dat', 'r')
+f = File::open(expath('redposs.dat'), 'r')
 redposs = Marshal.load(f)
 f.close
 set_grammar!( RULESET, START_SYMBOL, redposs )

@@ -1,7 +1,7 @@
 # desc: fparser 構文解析器
 
-require 'arraymethods'
-require 'qerror'
+require File.expand_path('../arraymethods', __FILE__) # 'arraymethods'
+require File.expand_path('../qerror', __FILE__)       # 'qerror'
 
 module Parser
 
